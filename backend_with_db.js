@@ -10,15 +10,6 @@ const port = 3000;
 
 app.use(express.json());
 
-console.log(
-  "mongodb+srv://" +
-    process.env.MONGO_USER +
-    ":" +
-    process.env.MONGO_PWD +
-    "@cluster0.6f9re.mongodb.net/" +
-    process.env.MONGO_DB +
-    "?retryWrites=true&w=majority"
-);
 mongoose
   .connect(
     "mongodb+srv://" +
@@ -35,7 +26,6 @@ mongoose
     }
   )
   .catch((error) => console.log(error));
-console.log(process.env.MONGO_USER);
 
 app.get("/", (req, res) => {
   res.send("Hello World!");
