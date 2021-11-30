@@ -4,11 +4,11 @@
   "description": "A sample backend for our class app with database access (MongoDB) using Mongoose.",
   "main": "backend_with_db.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "echo \"Error: no test specified\"",
     "dev": "nodemon backend_with_db.js",
     "start": "node backend_with_db.js"
   },
-  "author": "Dr. da Silva",
+  "author": "BJ Klingenberg (based on Dr. DaSilva's code",
   "license": "ISC",
   "dependencies": {
     "dotenv": "^10.0.0",
