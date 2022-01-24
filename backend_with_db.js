@@ -142,6 +142,8 @@ async function updateUser(id, updatedUser) {
   }
 }
 
-app.listen(port, () => {
-  console.log(`Example app listening at  http://localhost:${port}`);
+app.listen(process.env.PORT || port, () => {
+  if (process.env.PORT)
+    console.log(`REST API is listening on port: ${process.env.PORT}.`);
+  else console.log(`REST API is listening on port: ${port}.`);
 });
