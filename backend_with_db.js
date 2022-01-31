@@ -83,7 +83,7 @@ app.delete("/users/:id", async (req, res) => {
 
 async function deleteUserById(id) {
   try {
-    if (await userModel.findByIdAndDelete(id)) return true;
+    if (await userServices.deleteUser(id)) return true;
   } catch (error) {
     console.log(error);
     return false;
@@ -92,19 +92,9 @@ async function deleteUserById(id) {
 
 app.post("/users", async (req, res) => {
   const user = req.body;
-  if (await addUser(user)) res.status(201).end();
+  if (await userServices.addUser(user)) res.status(201).end();
   else res.status(500).end();
 });
-
-async function addUser(user) {
-  try {
-    const userToAdd = new userModel(user);
-    if (await userToAdd.save()) return true;
-  } catch (error) {
-    console.log(error);
-    return false;
-  }
-}
 
 app.patch("/users/:id", async (req, res) => {
   const id = req.params["id"];
