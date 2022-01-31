@@ -3,39 +3,29 @@ const mongoose = require("mongoose");
 const dotenv = require("dotenv");
 dotenv.config();
 
-const userModel = require("./models/user");
+const userModel = require("./models/user-services");
 
 const app = express();
-const port = 3000;
+const port = process.env.PORT;
 
 app.use(express.json());
 
-console.log(
-  "mongodb+srv://" +
-    process.env.MONGO_USER +
-    ":" +
-    process.env.MONGO_PWD +
-    "@cluster0.6f9re.mongodb.net/" +
-    process.env.MONGO_DB +
-    "?retryWrites=true&w=majority"
-);
 mongoose
   .connect(
-    "mongodb+srv://" +
-      process.env.MONGO_USER +
-      ":" +
-      process.env.MONGO_PWD +
-      "@cluster0.6f9re.mongodb.net/" +
-      process.env.MONGO_DB +
-      "?retryWrites=true&w=majority",
-    /* 'mongodb://localhost:27017/users', */
+    // "mongodb+srv://" +
+    //   process.env.MONGO_USER +
+    //   ":" +
+    //   process.env.MONGO_PWD +
+    //   "@cluster0.6f9re.mongodb.net/" +
+    //   process.env.MONGO_DB +
+    //   "?retryWrites=true&w=majority",
+    "mongodb://localhost:27017/users",
     {
       useNewUrlParser: true, //useFindAndModify: false,
       useUnifiedTopology: true,
     }
   )
   .catch((error) => console.log(error));
-console.log(process.env.MONGO_USER);
 
 app.get("/", (req, res) => {
   res.send("Hello World!");
@@ -48,9 +38,10 @@ app.get("/users", async (req, res) => {
   const job = req.query["job"];
   if (name === undefined && job === undefined) {
     try {
-      const users_from_db = await userModel.find();
+      const users_from_db = await getUsers();
       res.send({ users_list: users_from_db });
     } catch (error) {
+      console.log("Mongoose error: " + error);
       res.status(500).send("An error ocurred in the server.");
     }
   } else if (name && job === undefined) {
