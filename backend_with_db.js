@@ -1,8 +1,7 @@
 const express = require("express");
 const mongoose = require("mongoose");
-const dotenv = require("dotenv");
-dotenv.config();
 
+// Add mongdb user model
 const userModel = require("./models/user");
 
 const app = express();
@@ -11,20 +10,10 @@ const port = 3000;
 app.use(express.json());
 
 mongoose
-  .connect(
-    "mongodb+srv://" +
-      process.env.MONGO_USER +
-      ":" +
-      process.env.MONGO_PWD +
-      "@cluster0.6f9re.mongodb.net/" +
-      process.env.MONGO_DB +
-      "?retryWrites=true&w=majority",
-    /* 'mongodb://localhost:27017/users', */
-    {
-      useNewUrlParser: true, //useFindAndModify: false,
-      useUnifiedTopology: true,
-    }
-  )
+  .connect("mongodb://localhost:27017/users", {
+    useNewUrlParser: true, //useFindAndModify: false,
+    useUnifiedTopology: true,
+  })
   .catch((error) => console.log(error));
 
 app.get("/", (req, res) => {
