@@ -25,7 +25,6 @@ mongoose
 
 async function getUsers(name, job) {
   let result;
-  console.log("in getUsers");
   if (name === undefined && job === undefined) {
     result = await userModel.find();
   } else if (name && !job) {
@@ -66,4 +65,6 @@ async function findUserByJob(job) {
 
 exports.getUsers = getUsers;
 exports.findUserById = findUserById;
+exports.findUserByName = findUserByName;
+exports.findUserByJob = findUserByJob;
 exports.addUser = addUser;

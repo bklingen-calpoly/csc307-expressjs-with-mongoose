@@ -16,7 +16,6 @@ app.get("/", (req, res) => {
 app.get("/users", async (req, res) => {
   //res.send(users); //HTTP code 200 is set by default. See an alternative below
   //res.status(200).send(users);
-  console.log("in /users");
   const name = req.query["name"];
   const job = req.query["job"];
   if (name === undefined && job === undefined) {
@@ -29,35 +28,36 @@ app.get("/users", async (req, res) => {
       res.status(500).send("An error ocurred in the server.");
     }
   } else if (name && job === undefined) {
-    let result = await findUserByName(name);
+    console.log("in name");
+    let result = await userServices.findUserByName(name);
     result = { users_list: result };
     res.send(result);
   } else if (job && name === undefined) {
-    let result = await findUserByJob(job);
+    let result = await userServices.findUserByJob(job);
     result = { users_list: result };
     res.send(result);
   } else {
-    let result = await findUserByNameAndJob(name, job);
+    let result = await userServices.findUserByNameAndJob(name, job);
     result = { users_list: result };
     res.send(result);
   }
 });
 
-async function findUserByName(name) {
-  return await userModel.find({ name: name });
-}
+// async function findUserByName(name) {
+//   return await userModel.find({ name: name });
+// }
 
-async function findUserByJob(job) {
-  return await userModel.find({ job: job });
-}
+// async function findUserByJob(job) {
+//   return await userModel.find({ job: job });
+// }
 
-async function findUserByNameAndJob(name, job) {
-  return await userModel.find({ name: name, job: job });
-}
+// async function findUserByNameAndJob(name, job) {
+//   return await userModel.find({ name: name, job: job });
+// }
 
 app.get("/users/:id", async (req, res) => {
   const id = req.params["id"];
-  let result = await findUserById(id);
+  let result = await userServices.findUserById(id);
   if (result === undefined || result === null)
     res.status(404).send("Resource not found.");
   else {
