@@ -1,8 +1,8 @@
 const express = require("express");
 const mongoose = require("mongoose");
 
-// Add mongdb user model
-const userModel = require("./models/user");
+// Add mongdb user services
+const userServices = require("./models/user-services");
 
 const app = express();
 const port = 5000;
