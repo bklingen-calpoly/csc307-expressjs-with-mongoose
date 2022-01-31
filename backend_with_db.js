@@ -9,13 +9,6 @@ const port = 5000;
 
 app.use(express.json());
 
-mongoose
-  .connect("mongodb://localhost:27017/users", {
-    useNewUrlParser: true, //useFindAndModify: false,
-    useUnifiedTopology: true,
-  })
-  .catch((error) => console.log(error));
-
 app.get("/", (req, res) => {
   res.send("Hello World!");
 });
@@ -23,13 +16,16 @@ app.get("/", (req, res) => {
 app.get("/users", async (req, res) => {
   //res.send(users); //HTTP code 200 is set by default. See an alternative below
   //res.status(200).send(users);
+  console.log("in /users");
   const name = req.query["name"];
   const job = req.query["job"];
   if (name === undefined && job === undefined) {
     try {
-      const users_from_db = await userModel.find();
+      const users_from_db = await userServices.getUsers();
+      console.log(users_from_db);
       res.send({ users_list: users_from_db });
     } catch (error) {
+      console.log("Mongoose error: " + error);
       res.status(500).send("An error ocurred in the server.");
     }
   } else if (name && job === undefined) {
