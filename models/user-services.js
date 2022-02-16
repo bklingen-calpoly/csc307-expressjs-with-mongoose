@@ -6,6 +6,15 @@ dotenv.config();
 
 // Uncomment the following to debug mongoose queries, etc.
 // mongoose.set("debug", true);
+console.log(
+  "mongodb+srv://" +
+    process.env.MONGO_USER +
+    ":" +
+    process.env.MONGO_PWD +
+    "@cluster0.6f9re.mongodb.net/" +
+    process.env.MONGO_DB +
+    "?retryWrites=true&w=majority"
+);
 
 mongoose
   .connect(
