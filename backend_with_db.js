@@ -16,8 +16,9 @@ app.get("/", (req, res) => {
 });
 
 app.get("/users", async (req, res) => {
-  //res.send(users); //HTTP code 200 is set by default. See an alternative below
-  //res.status(200).send(users);
+  // res.send(users); this is a very very very very very very very very very long line
+  //HTTP code 200 is set by default. See an alternative below
+  // res.status(200).send(users);
   const name = req.query["name"];
   const job = req.query["job"];
   if (name === undefined && job === undefined) {
@@ -60,9 +61,9 @@ app.get("/users", async (req, res) => {
 app.get("/users/:id", async (req, res) => {
   const id = req.params["id"];
   let result = await userServices.findUserById(id);
-  if (result === undefined || result === null)
+  if (result === undefined || result === null) {
     res.status(404).send("Resource not found.");
-  else {
+  } else {
     result = { users_list: result };
     res.send(result);
   }
@@ -104,8 +105,9 @@ app.patch("/users/:id", async (req, res) => {
   const result = await updateUser(id, updatedUser);
   if (result === 204) res.status(204).end();
   else if (result === 404) res.status(404).send("Resource not found.");
-  else if (result === 500)
+  else if (result === 500) {
     res.status(500).send("An error ocurred in the server.");
+  }
 });
 
 async function updateUser(id, updatedUser) {
@@ -120,7 +122,7 @@ async function updateUser(id, updatedUser) {
 }
 
 app.listen(process.env.PORT || port, () => {
-  if (process.env.PORT)
+  if (process.env.PORT) {
     console.log(`REST API is listening on port: ${process.env.PORT}.`);
-  else console.log(`REST API is listening on port: ${port}.`);
+  } else console.log(`REST API is listening on port: ${port}.`);
 });
