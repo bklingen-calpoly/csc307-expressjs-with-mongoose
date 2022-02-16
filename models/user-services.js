@@ -23,7 +23,9 @@ mongoose
       process.env.MONGO_USER +
       ":" +
       process.env.MONGO_PWD +
-      "@cluster0.6f9re.mongodb.net/" +
+      "@" +
+      process.env.MONGO_CLUSTER +
+      "/" +
       process.env.MONGO_DB +
       "?retryWrites=true&w=majority",
     // "mongodb://localhost:27017/users",
