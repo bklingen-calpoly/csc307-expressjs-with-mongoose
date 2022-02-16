@@ -74,8 +74,8 @@ async function deleteUser(id) {
   return await userModel.deleteById(id);
 }
 
-function disconnectDB() {
-  mongoose.disconnect();
+async function disconnectDB() {
+  await mongoose.disconnect();
 }
 
 exports.getUsers = getUsers;

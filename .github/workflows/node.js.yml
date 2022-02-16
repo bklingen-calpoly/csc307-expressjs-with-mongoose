@@ -18,6 +18,11 @@ jobs:
         node-version: [12.x]
         # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
 
+      env:
+        MONGO_DB: ${{ secrets.MONGODB_DB }}
+        MONGO_USER: ${{ secrets.MONGODB_USER }}
+        MONGO_PWD: ${{ secrets.MONGODB_PWD }}
+
     steps:
       - uses: actions/checkout@v2
       - name: Use Node.js ${{ matrix.node-version }}
