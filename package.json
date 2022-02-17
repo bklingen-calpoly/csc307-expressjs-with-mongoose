@@ -4,8 +4,8 @@
   "description": "A sample backend for our class app with database access (MongoDB) using Mongoose.",
   "main": "backend_with_db.js",
   "scripts": {
-    "test": "jest",
-    "coverage": "jest --collectCoverage",
+    "test": "jest --forceExit",
+    "coverage": "jest --collectCoverage --forceExits",
     "dev": "nodemon backend_with_db.js",
     "start": "node backend_with_db.js"
   },

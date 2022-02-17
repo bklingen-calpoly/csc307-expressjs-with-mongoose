@@ -7,19 +7,20 @@ const ObjectId = require("mongoose").Types.ObjectId;
 test("test db query user Joe", async () => {
   let result = await userServices.findUserByName("Joe");
   console.log(result);
+  console.log(result[0]);
+  console.log(result[0].name);
   //   let name = result[{"job:"}]
   //   console.log(name);
-  expected = [
-    {
-      _id: ObjectId("600f49555f2c7e977e0652c8"),
-      job: "Mailman",
-      name: "Joe",
-    },
-  ];
+  // expected = {
+  //   _id: ObjectId("600f49555f2c7e977e0652c8"),
+  //   job: "Mailman",
+  //   name: "Joe",
+  // };
 
-  expect(expected).toEqual(expected);
+  expect(result[0].name).toBe("Joe");
+  expect(result[0].job).toBe("Mailman");
 });
 
-afterAll(async () => {
-  await userServices.disconnectDB();
-});
+// afterAll(async () => {
+//   await userServices.disconnectDB();
+// });

@@ -7,16 +7,6 @@ dotenv.config();
 // Uncomment the following to debug mongoose queries, etc.
 // mongoose.set("debug", true);
 
-// // console.log(
-//   "mongodb+srv://" +
-//     process.env.MONGO_USER +
-//     ":" +
-//     process.env.MONGO_PWD +
-//     "@cluster0.6f9re.mongodb.net/" +
-//     process.env.MONGO_DB +
-//     "?retryWrites=true&w=majority"
-// );
-
 mongoose
   .connect(
     "mongodb+srv://" +
@@ -86,13 +76,14 @@ async function deleteUser(id) {
   return await userModel.deleteById(id);
 }
 
-async function disconnectDB() {
-  await mongoose.disconnect();
-}
+// async function disconnectDB() {
+//   await mongoose.connection.close();
+//   await mongoose.disconnect();
+// }
 
 exports.getUsers = getUsers;
 exports.findUserById = findUserById;
 exports.findUserByName = findUserByName;
 exports.addUser = addUser;
 exports.deleteUser = deleteUser;
-exports.disconnectDB = disconnectDB;
+// exports.disconnectDB = disconnectDB;
