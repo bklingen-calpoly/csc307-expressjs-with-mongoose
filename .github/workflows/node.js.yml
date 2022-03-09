@@ -34,6 +34,12 @@ jobs:
           MONGO_USER: ${{ secrets.MONGO_USER }}
           MONGO_PWD: ${{ secrets.MONGO_PWD }}
           MONGO_CLUSTER: ${{ secrets.MONGO_CLUSTER}}
+      - run: npm coverage
+        env:
+          MONGO_DB: ${{ secrets.MONGO_DB }}
+          MONGO_USER: ${{ secrets.MONGO_USER }}
+          MONGO_PWD: ${{ secrets.MONGO_PWD }}
+          MONGO_CLUSTER: ${{ secrets.MONGO_CLUSTER}}
       - uses: akhileshns/heroku-deploy@v3.12.12
         with:
           heroku_api_key: ${{secrets.HEROKU_API_KEY}}

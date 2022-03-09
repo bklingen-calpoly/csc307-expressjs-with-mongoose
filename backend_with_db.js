@@ -33,6 +33,7 @@ app.get("/users", async (req, res) => {
   } else if (name && job === undefined) {
     console.log("in name");
     let result = await userServices.findUserByName(name);
+    console.log(result);
     result = { users_list: result };
     res.send(result);
   } else if (job && name === undefined) {
