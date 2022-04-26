@@ -24,16 +24,13 @@ app.get("/users", async (req, res) => {
   if (name === undefined && job === undefined) {
     try {
       const users_from_db = await userServices.getUsers();
-      console.log(users_from_db);
       res.send({ users_list: users_from_db });
     } catch (error) {
       console.log("Mongoose error: " + error);
       res.status(500).send("An error ocurred in the server.");
     }
   } else if (name && job === undefined) {
-    console.log("in name");
     let result = await userServices.findUserByName(name);
-    console.log(result);
     result = { users_list: result };
     res.send(result);
   } else if (job && name === undefined) {

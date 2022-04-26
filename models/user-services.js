@@ -73,7 +73,7 @@ async function findUserByNameAndJob(name, job) {
 }
 
 async function deleteUser(id) {
-  return await userModel.deleteById(id);
+  return await userModel.findByIdAndDelete(id);
 }
 
 // async function disconnectDB() {
