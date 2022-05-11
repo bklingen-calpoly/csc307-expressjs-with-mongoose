@@ -5,7 +5,7 @@ const dotenv = require("dotenv");
 dotenv.config();
 
 // Uncomment the following to debug mongoose queries, etc.
-// mongoose.set("debug", true);
+mongoose.set("debug", true);
 
 mongoose
   .connect(
