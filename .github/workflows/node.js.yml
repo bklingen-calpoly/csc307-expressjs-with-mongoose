@@ -5,9 +5,9 @@ name: Backend Node.js CI and CD
 
 on:
   push:
-    branches: [cloud-database]
+    branches: [cloud-database, ci-cd]
   pull_request:
-    branches: [cloud-database]
+    branches: [cloud-database, ci-cd]
 
 jobs:
   build:
@@ -40,8 +40,8 @@ jobs:
           MONGO_USER: ${{ secrets.MONGO_USER }}
           MONGO_PWD: ${{ secrets.MONGO_PWD }}
           MONGO_CLUSTER: ${{ secrets.MONGO_CLUSTER}}
-      - uses: akhileshns/heroku-deploy@v3.12.12
-        with:
-          heroku_api_key: ${{secrets.HEROKU_API_KEY}}
-          heroku_app_name: "csc307-api-bklingen"
-          heroku_email: "bklingen@calpoly.edu"
+      # - uses: akhileshns/heroku-deploy@v3.12.12
+      #   with:
+      #     heroku_api_key: ${{secrets.HEROKU_API_KEY}}
+      #     heroku_app_name: "csc307-api-bklingen"
+      #     heroku_email: "bklingen@calpoly.edu"
