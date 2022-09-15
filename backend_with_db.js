@@ -13,7 +13,7 @@ app.use(cors({ origin: "http://localhost" }));
 app.use(express.json());
 
 app.get("/", (req, res) => {
-  res.send("Hello World!");
+  res.send("Hello World! - node backend app version 1.0");
 });
 
 app.get("/users", async (req, res) => {
@@ -122,6 +122,11 @@ async function updateUser(id, updatedUser) {
 
 app.listen(process.env.PORT || port, () => {
   if (process.env.PORT) {
-    console.log(`REST API is listening on port: ${process.env.PORT}.`);
-  } else console.log(`REST API is listening on port: ${port}.`);
+    console.log(
+      `REST API Version ${process.env.APP_VERSION} is listening on port: ${process.env.PORT}.`
+    );
+  } else
+    console.log(
+      `REST API Version ${process.env.APP_VERSION}  is listening on port: ${port}.`
+    );
 });
