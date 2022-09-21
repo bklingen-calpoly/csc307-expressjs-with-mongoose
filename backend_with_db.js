@@ -7,6 +7,7 @@ const userServices = require("./models/user-services");
 
 const app = express();
 const port = 5000;
+const APP_VERSION = "1.0.0";
 
 app.use(cors({ origin: "http://localhost" }));
 
@@ -123,10 +124,10 @@ async function updateUser(id, updatedUser) {
 app.listen(process.env.PORT || port, () => {
   if (process.env.PORT) {
     console.log(
-      `REST API Version ${process.env.APP_VERSION} is listening on port: ${process.env.PORT}.`
+      `REST API Version ${APP_VERSION} is listening on port: ${process.env.PORT}.`
     );
   } else
     console.log(
-      `REST API Version ${process.env.APP_VERSION}  is listening on port: ${port}.`
+      `REST API Version ${APP_VERSION} is listening on port: ${port}.`
     );
 });
