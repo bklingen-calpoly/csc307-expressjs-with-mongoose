@@ -14,7 +14,7 @@ app.use(cors({ origin: "http://localhost" }));
 app.use(express.json());
 
 app.get("/", (req, res) => {
-  res.send("Hello World! - node backend app version 1.0");
+  res.send(`Hello World! - node backend app version ${APP_VERSION}`);
 });
 
 app.get("/users", async (req, res) => {
