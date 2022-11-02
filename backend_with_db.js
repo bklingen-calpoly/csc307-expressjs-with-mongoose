@@ -9,7 +9,8 @@ const app = express();
 const port = 5000;
 const APP_VERSION = "1.0.0";
 
-app.use(cors({ origin: "http://localhost" }));
+// app.use(cors({ origin: "http://localhost" }));
+app.use(cors());
 
 app.use(express.json());
 
@@ -19,7 +20,7 @@ app.get("/", (req, res) => {
 
 app.get("/users", async (req, res) => {
   // res.send(users); this is a very very very very very very very very very long line
-  //HTTP code 200 is set by default. See an alternative below
+  // HTTP code 200 is set by default. See an alternative below
   // res.status(200).send(users);
   const name = req.query["name"];
   const job = req.query["job"];
@@ -126,8 +127,9 @@ app.listen(process.env.PORT || port, () => {
     console.log(
       `REST API Version ${APP_VERSION} is listening on port: ${process.env.PORT}.`
     );
-  } else
+  } else {
     console.log(
       `REST API Version ${APP_VERSION} is listening on port: ${port}.`
     );
+  }
 });
