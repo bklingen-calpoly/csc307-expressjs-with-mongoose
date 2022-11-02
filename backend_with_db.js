@@ -2,7 +2,7 @@ const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
 
-// Add mongdb user services
+// Add mongdb user services  ci
 const userServices = require("./models/user-services");
 
 const app = express();
