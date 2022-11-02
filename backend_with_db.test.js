@@ -1,6 +1,5 @@
 const userServices = require("./models/user-services");
-// const mongoose = require("mongoose");
-// const ObjectId = require("mongoose").Types.ObjectId;
+
 test("test getUsers - all", async () => {
   const result = await userServices.getUsers();
 
