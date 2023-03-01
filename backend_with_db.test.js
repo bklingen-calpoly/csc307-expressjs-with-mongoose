@@ -5,64 +5,64 @@ test("test getUsers - all", async () => {
 
   // expected = {
   //   _id: ObjectId("600f49555f2c7e977e0652c8"),
-  //   job: "Mailman",
-  //   name: "Joe",
+  //   job: "Janitor",
+  //   name: "Charlie",
   // };
 
-  expect(result[0].name).toBe("Joe");
-  expect(result[0].job).toBe("Mailman");
+  expect(result[0].name).toBe("Charlie");
+  expect(result[0].job).toBe("Janitor");
 });
 
-test("test getUsers byName  Joe", async () => {
-  const result = await userServices.getUsers("Joe", null);
+test("test getUsers byName  Charlie", async () => {
+  const result = await userServices.getUsers("Charlie", null);
 
   // expected = {
   //   _id: ObjectId("600f49555f2c7e977e0652c8"),
-  //   job: "Mailman",
-  //   name: "Joe",
+  //   job: "Janitor",
+  //   name: "Charlie",
   // };
 
-  expect(result[0].name).toBe("Joe");
-  expect(result[0].job).toBe("Mailman");
+  expect(result[0].name).toBe("Charlie");
+  expect(result[0].job).toBe("Janitor");
 });
-test("test getUsers byJob  Mailman", async () => {
-  const result = await userServices.getUsers(null, "Mailman");
+test("test getUsers byJob  Janitor", async () => {
+  const result = await userServices.getUsers(null, "Janitor");
 
   // expected = {
   //   _id: ObjectId("600f49555f2c7e977e0652c8"),
-  //   job: "Mailman",
-  //   name: "Joe",
+  //   job: "Janitor",
+  //   name: "Charlie",
   // };
 
-  expect(result[0].name).toBe("Joe");
-  expect(result[0].job).toBe("Mailman");
+  expect(result[0].name).toBe("Charlie");
+  expect(result[0].job).toBe("Janitor");
 });
 
-test("test getUsers byName and byJob  Joe, Mailman", async () => {
-  const result = await userServices.getUsers("Joe", "Mailman");
+test("test getUsers byName and byJob  Charlie, Janitor", async () => {
+  const result = await userServices.getUsers("Charlie", "Janitor");
 
   // expected = {
   //   _id: ObjectId("600f49555f2c7e977e0652c8"),
-  //   job: "Mailman",
-  //   name: "Joe",
+  //   job: "Janitor",
+  //   name: "Charlie",
   // };
 
-  expect(result[0].name).toBe("Joe");
-  expect(result[0].job).toBe("Mailman");
+  expect(result[0].name).toBe("Charlie");
+  expect(result[0].job).toBe("Janitor");
 });
 
-test("test findUserById Joe Mailman", async () => {
+test("test findUserById Charlie Janitor", async () => {
   const result = await userServices.findUserById("600f49555f2c7e977e0652c8");
   console.log("findUserById result: " + result);
 
   // expected = {
   //   _id: ObjectId("600f49555f2c7e977e0652c8"),
-  //   job: "Mailman",
-  //   name: "Joe",
+  //   job: "Janitor",
+  //   name: "Charlie",
   // };
 
-  expect(result.name).toBe("Joe");
-  expect(result.job).toBe("Mailman");
+  expect(result.name).toBe("Charlie");
+  expect(result.job).toBe("Janitor");
 });
 
 test("test findUserById notfound", async () => {
@@ -71,8 +71,8 @@ test("test findUserById notfound", async () => {
 
   // expected = {
   //   _id: ObjectId("600f49555f2c7e977e0652c8"),
-  //   job: "Mailman",
-  //   name: "Joe",
+  //   job: "Janitor",
+  //   name: "Charlie",
   // };
 
   expect(result).toBe(null);
@@ -86,8 +86,8 @@ test("test addUser  Fred, Dancer", async () => {
 
   // expected = {
   //   _id: ObjectId("600f49555f2c7e977e0652c8"),
-  //   job: "Mailman",
-  //   name: "Joe",
+  //   job: "Janitor",
+  //   name: "Charlie",
   // };
 
   expect(result[0].name).toBe("Fred");
@@ -101,8 +101,8 @@ test("test deleteUser  Fred", async () => {
 
   // expected = {
   //   _id: ObjectId("600f49555f2c7e977e0652c8"),
-  //   job: "Mailman",
-  //   name: "Joe",
+  //   job: "Janitor",
+  //   name: "Charlie",
   // };
   const after_result = await userServices.getUsers("Fred", "Dancer");
 
