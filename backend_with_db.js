@@ -7,7 +7,7 @@ const userServices = require("./models/user-services");
 
 const app = express();
 const port = 5000;
-const APP_VERSION = "1.0.0";
+const APP_VERSION = "1.0.1";
 
 // app.use(cors({ origin: "http://localhost" }));
 app.use(cors());
