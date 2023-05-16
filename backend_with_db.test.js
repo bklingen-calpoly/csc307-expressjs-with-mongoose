@@ -9,8 +9,10 @@ test("test getUsers - all", async () => {
   //   name: "Charlie",
   // };
 
-  expect(result[0].name).toBe("Charlie");
-  expect(result[0].job).toBe("Janitor");
+  // first user should be Joe the Mailman
+
+  expect(result[0].name).toBe("Joe");
+  expect(result[0].job).toBe("Mailman");
 });
 
 test("test getUsers byName  Charlie", async () => {
@@ -51,7 +53,7 @@ test("test getUsers byName and byJob  Charlie, Janitor", async () => {
   expect(result[0].job).toBe("Janitor");
 });
 
-test("test findUserById Charlie Janitor", async () => {
+test("test findUserById Joe Mailman", async () => {
   const result = await userServices.findUserById("600f49555f2c7e977e0652c8");
   console.log("findUserById result: " + result);
 
@@ -61,8 +63,8 @@ test("test findUserById Charlie Janitor", async () => {
   //   name: "Charlie",
   // };
 
-  expect(result.name).toBe("Charlie");
-  expect(result.job).toBe("Janitor");
+  expect(result.name).toBe("Joe");
+  expect(result.job).toBe("Mailman");
 });
 
 test("test findUserById notfound", async () => {
