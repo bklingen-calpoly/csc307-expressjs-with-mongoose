@@ -1,5 +1,5 @@
 # csc307-expressjs-with-mongoose
 
-[![Backend Node.js CI and CD](https://github.com/bklingen-calpoly/csc307-expressjs-with-mongoose/actions/workflows/node.js.yml/badge.svg?branch=cloud-database)](https://github.com/bklingen-calpoly/csc307-expressjs-with-mongoose/actions/workflows/node.js.yml)
+[![Build and deploy Node.js app to Azure Web App - csc307-backend](https://github.com/bklingen-calpoly/csc307-expressjs-with-mongoose/actions/workflows/ci-cd_csc307-backend.yml/badge.svg)](https://github.com/bklingen-calpoly/csc307-expressjs-with-mongoose/actions/workflows/ci-cd_csc307-backend.yml)
 
 csc307 repo for express backend with mongoose
