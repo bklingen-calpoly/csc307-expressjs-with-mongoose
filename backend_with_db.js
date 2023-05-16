@@ -6,7 +6,7 @@ const cors = require("cors");
 const userServices = require("./models/user-services");
 
 const app = express();
-const port = 5000;
+const port = 8000;
 const APP_VERSION = "1.0.1";
 
 // app.use(cors({ origin: "http://localhost" }));
@@ -96,7 +96,8 @@ async function deleteUserById(id) {
 
 app.post("/users", async (req, res) => {
   const user = req.body;
-  if (await userServices.addUser(user)) res.status(201).end();
+  const savedUser = await userServices.addUser(user);
+  if (savedUser) res.status(201).send(savedUser);
   else res.status(500).end();
 });
 

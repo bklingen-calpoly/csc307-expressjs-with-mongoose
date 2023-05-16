@@ -8,16 +8,16 @@ dotenv.config();
 // mongoose.set("debug", true);
 
 mongoose.connect(
-  // "mongodb+srv://" +
-  //   process.env.MONGO_USER +
-  //   ":" +
-  //   process.env.MONGO_PWD +
-  //   "@" +
-  //   process.env.MONGO_CLUSTER +
-  //   "/" +
-  //   process.env.MONGO_DB +
-  //   "?retryWrites=true&w=majority",
-  "mongodb://localhost:27017/users",
+  "mongodb+srv://" +
+    process.env.MONGO_USER +
+    ":" +
+    process.env.MONGO_PWD +
+    "@" +
+    process.env.MONGO_CLUSTER +
+    "/" +
+    process.env.MONGO_DB +
+    "?retryWrites=true&w=majority",
+  // "mongodb://127.0.0.1:27017/users",
   {
     useNewUrlParser: true, //useFindAndModify: false,
     useUnifiedTopology: true,

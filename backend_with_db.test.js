@@ -9,8 +9,8 @@ test("test getUsers - all", async () => {
   //   name: "Charlie",
   // };
 
-  expect(result[0].name).toBe("Charlie");
-  expect(result[0].job).toBe("Janitor");
+  expect(result[0].name).toBe("Joe");
+  expect(result[0].job).toBe("Mailman");
 });
 
 test("test getUsers byName  Charlie", async () => {
@@ -61,8 +61,8 @@ test("test findUserById Charlie Janitor", async () => {
   //   name: "Charlie",
   // };
 
-  expect(result.name).toBe("Charlie");
-  expect(result.job).toBe("Janitor");
+  expect(result.name).toBe("Joe");
+  expect(result.job).toBe("Mailman");
 });
 
 test("test findUserById notfound", async () => {
