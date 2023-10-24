@@ -1,6 +1,7 @@
-const mongoose = require("mongoose");
-const userModel = require("./user");
-const dotenv = require("dotenv");
+import mongoose from "mongoose";
+import userModel from "./user.js";
+
+import dotenv from "dotenv";
 
 dotenv.config();
 
@@ -81,9 +82,12 @@ async function deleteUser(id) {
 //   await mongoose.disconnect();
 // }
 
-exports.getUsers = getUsers;
-exports.findUserById = findUserById;
-exports.findUserByName = findUserByName;
-exports.addUser = addUser;
-exports.deleteUser = deleteUser;
+export default {
+  addUser,
+  getUsers,
+  findUserById,
+  findUserByName,
+  findUserByJob,
+};
+
 // exports.disconnectDB = disconnectDB;

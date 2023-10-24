@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "A sample backend for our class app with database access (MongoDB) using Mongoose.",
   "main": "backend_with_db.js",
+  "type": "module",
   "scripts": {
     "test": "jest --forceExit",
     "coverage": "jest --collectCoverage --forceExit",

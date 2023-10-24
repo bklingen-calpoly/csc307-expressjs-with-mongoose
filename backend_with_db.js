@@ -1,12 +1,11 @@
-const express = require("express");
-const mongoose = require("mongoose");
-const cors = require("cors");
+import express from "express";
+import cors from "cors";
 
 // Add mongdb user services
-const userServices = require("./models/user-services");
+import userServices from "./models/user-services.js";
 
 const app = express();
-const port = 5000;
+const port = 8000;
 
 app.use(cors());
 app.use(express.json());

@@ -1,4 +1,4 @@
-const userServices = require("./models/user-services");
+import userServices from "./models/user-services.js";
 // const mongoose = require("mongoose");
 // const ObjectId = require("mongoose").Types.ObjectId;
 
