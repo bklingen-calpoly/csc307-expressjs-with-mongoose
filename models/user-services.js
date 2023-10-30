@@ -7,7 +7,7 @@ dotenv.config();
 
 // Uncomment the following to debug mongoose queries, etc.
 mongoose.set("debug", true);
-
+console.log(">>mongo cluster: " + process.env.MONGO_CLUSTER);
 mongoose
   .connect(
     "mongodb+srv://" +

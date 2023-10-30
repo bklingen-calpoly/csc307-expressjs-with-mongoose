@@ -5,8 +5,8 @@
   "main": "backend_with_db.js",
   "type": "module",
   "scripts": {
-    "test": "jest --forceExit",
-    "coverage": "jest --collectCoverage --forceExit",
+    "test": "NODE_OPTIONS=--experimental-vm-modules jest  --forceExit",
+    "coverage": "NODE_OPTIONS=--experimental-vm-modules jest --collectCoverage --forceExit",
     "dev": "nodemon backend_with_db.js",
     "start": "node backend_with_db.js"
   },
