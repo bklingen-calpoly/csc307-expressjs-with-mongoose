@@ -54,8 +54,8 @@ jobs:
         with:
           name: node-app
 
-      # - name: list files
-      #   run: lr -Lr
+      - name: list files
+        run: ls -lR
 
       # - name: unzip artifact for deployment
       #   run: Expand-Archive -Path release.zip -DestinationPath .
