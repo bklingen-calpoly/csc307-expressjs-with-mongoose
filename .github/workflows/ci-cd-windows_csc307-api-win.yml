@@ -9,10 +9,6 @@ on:
       - ci-cd-windows
   workflow_dispatch:
 
-defaults:
-  run:
-    working-directory: expressjs-backend
-
 jobs:
   build:
     runs-on: windows-latest
