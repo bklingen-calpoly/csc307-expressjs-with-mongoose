@@ -67,5 +67,5 @@ jobs:
         with:
           app-name: "csc307-api-win"
           slot-name: "Production"
-          package: express-backend/release.zip
+          package: release.zip
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_35EB76A956764899B0C9F8ED8DC1C01E }}
