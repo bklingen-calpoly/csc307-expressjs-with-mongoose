@@ -54,9 +54,12 @@ jobs:
         with:
           name: node-app
 
-      - name: unzip artifact for deployment
-        run: Expand-Archive -Path release.zip -DestinationPath .
-        working-directory: .
+      # - name: list files
+      #   run: lr -Lr
+
+      # - name: unzip artifact for deployment
+      #   run: Expand-Archive -Path release.zip -DestinationPath .
+      #   working-directory: .
 
       - name: "Deploy to Azure Web App"
         uses: azure/webapps-deploy@v2
@@ -64,5 +67,5 @@ jobs:
         with:
           app-name: "csc307-api-win"
           slot-name: "Production"
-          package: .
+          package: express-backend/release.zip
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_35EB76A956764899B0C9F8ED8DC1C01E }}
