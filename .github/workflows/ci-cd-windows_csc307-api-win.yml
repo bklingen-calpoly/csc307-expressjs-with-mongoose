@@ -9,6 +9,10 @@ on:
       - ci-cd-windows
   workflow_dispatch:
 
+defaults:
+  run:
+    working-directory: expressjs-backend
+
 jobs:
   build:
     runs-on: windows-latest
@@ -32,14 +36,14 @@ jobs:
           npm run build --if-present
           npm run test --if-present
 
-      - name: Zip artifact for development job
-        run: Compress-Archive -Path * -DestinationPath release.zip
+      # - name: Zip artifact for development job
+      #   run: Compress-Archive -Path * -DestinationPath release.zip
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v3
         with:
           name: node-app
-          path: express-backend/release.zip
+          path: .
 
   deploy:
     runs-on: windows-latest
@@ -54,8 +58,8 @@ jobs:
         with:
           name: node-app
 
-      - name: list files
-        run: ls -lR
+      # - name: list files
+      #   run: ls -lR
 
       # - name: unzip artifact for deployment
       #   run: Expand-Archive -Path release.zip -DestinationPath .
@@ -67,5 +71,5 @@ jobs:
         with:
           app-name: "csc307-api-win"
           slot-name: "Production"
-          package: release.zip
+          package: .
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_35EB76A956764899B0C9F8ED8DC1C01E }}
