@@ -1,6 +1,7 @@
 # Docs for the Azure Web Apps Deploy action: https://github.com/Azure/webapps-deploy
 # More GitHub Actions for Azure: https://github.com/Azure/actions
 # optimize https://techcommunity.microsoft.com/t5/apps-on-azure-blog/how-to-reduce-the-deployment-time-using-the-file-compression/ba-p/3708095
+# redo after SCO_DO_BUILD setting update
 
 name: Build and deploy Node.js app to Azure Web App - csc307-api-win
 
