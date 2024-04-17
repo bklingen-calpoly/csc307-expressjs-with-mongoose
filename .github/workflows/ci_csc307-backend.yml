@@ -32,7 +32,7 @@ jobs:
 
       - name: npm ci, build, and test
         env:
-          MONGO_DB: ${{ secrets.MONGO_DB }}
+          MONGO_: ${{ secrets.MONGO_DB }}
           MONGO_USER: ${{ secrets.MONGO_USER }}
           MONGO_PWD: ${{ secrets.MONGO_PWD }}
           MONGO_CLUSTER: ${{ secrets.MONGO_CLUSTER}}
