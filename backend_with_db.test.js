@@ -9,10 +9,10 @@ test("test getUsers - all", async () => {
   //   name: "Charlie",
   // };
 
-  // first user should be Joe the Mailman
+  // first user should be Charlie the Janitor
 
-  expect(result[0].name).toBe("Joe");
-  expect(result[0].job).toBe("Mailman");
+  expect(result[0].name).toBe("Charlie");
+  expect(result[0].job).toBe("Janitor");
 });
 
 test("test getUsers byName  Charlie", async () => {
