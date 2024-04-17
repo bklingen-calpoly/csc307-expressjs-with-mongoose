@@ -29,6 +29,6 @@ jobs:
           MONGO_CLUSTER: ${{ secrets.MONGO_CLUSTER}}
         run: |
           npm install
-          npm run build --if-present
+          npm run ci --if-present
           npm run test --if-present  
           npm run coverage --if-present
