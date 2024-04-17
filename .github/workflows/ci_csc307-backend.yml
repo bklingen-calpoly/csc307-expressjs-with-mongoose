@@ -37,7 +37,7 @@ jobs:
           MONGO_PWD: ${{ secrets.MONGO_PWD }}
           MONGO_CLUSTER: ${{ secrets.MONGO_CLUSTER}}
         run: |
-          npm run ci
-          npm run build --if-present
-          npm run test --if-present  
+          npm ci
+          npm build --if-present
+          npm test --if-present  
           npm run coverage --if-present
