@@ -7,6 +7,7 @@ import userServices from "./models/user-services.js";
 const app = express();
 const port = 8000;
 
+// todo add specific cors to limit access
 app.use(cors());
 app.use(express.json());
 
