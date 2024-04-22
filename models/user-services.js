@@ -4,7 +4,7 @@ const dotenv = require("dotenv");
 
 dotenv.config();
 
-//mongoose.set("debug", true);
+mongoose.set("debug", true);
 
 mongoose
   .connect("mongodb://localhost:27017/users", {
