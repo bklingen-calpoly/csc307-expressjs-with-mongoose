@@ -6,9 +6,11 @@ name: CI demo -- Build and test Node.js app - csc307-backend
 on:
   push:
     branches:
+      - main
       - ci
   pull_request:
     branches:
+      - main
       - ci
   workflow_dispatch:
 
