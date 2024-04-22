@@ -1,12 +1,12 @@
-const express = require("express");
-const mongoose = require("mongoose");
-const cors = require("cors");
+import express from "express";
+// import mongoose from "mongoose";
+import cors from "cors";
 
 // Add mongdb user services  ci
-const userServices = require("./models/user-services");
+import userServices from "./models/user-services.js";
 
 const app = express();
-const port = 5000;
+const port = 8000;
 const APP_VERSION = "1.0.1";
 
 // app.use(cors({ origin: "http://localhost" }));
@@ -96,7 +96,8 @@ async function deleteUserById(id) {
 
 app.post("/users", async (req, res) => {
   const user = req.body;
-  if (await userServices.addUser(user)) res.status(201).end();
+  const newUser = await userServices.addUser(user);
+  if (newUser) res.status(201).send(newUser);
   else res.status(500).end();
 });
 

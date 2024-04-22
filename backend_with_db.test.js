@@ -1,4 +1,4 @@
-const userServices = require("./models/user-services");
+import userServices from "./models/user-services";
 
 test("test getUsers - all", async () => {
   const result = await userServices.getUsers();
