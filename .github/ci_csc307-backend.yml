@@ -1,0 +1,43 @@
+# Docs for the Azure Web Apps Deploy action: https://github.com/Azure/webapps-deploy
+# More GitHub Actions for Azure: https://github.com/Azure/actions
+
+name: CI demo -- Build and test Node.js app - csc307-backend
+
+on:
+  push:
+    branches:
+      - ci
+  pull_request:
+    branches:
+      - ci
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ${{ matrix.os }} # ubuntu-latest
+
+    strategy:
+      matrix:
+        os: [ubuntu-latest] # macos-latest, windows-latest
+        node-version: [18.x]
+        #See supported Node.js release schedule at https://nodejs.org/en/about/releases/
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up Node.js version
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version}}
+          cache: "npm"
+
+      - name: npm ci, build, and test
+        env:
+          MONGO_DB: ${{ secrets.MONGO_DB }}
+          MONGO_USER: ${{ secrets.MONGO_USER }}
+          MONGO_PWD: ${{ secrets.MONGO_PWD }}
+          MONGO_CLUSTER: ${{ secrets.MONGO_CLUSTER}}
+        run: |
+          npm ci
+          npm run build --if-present
+          npm test --if-present  
+          npm run coverage --if-present
