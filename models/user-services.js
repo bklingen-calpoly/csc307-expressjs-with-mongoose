@@ -9,6 +9,11 @@ dotenv.config();
 
 let dbConnection;
 
+function setDbConnection(newConn) {
+  dbConnection = newConn;
+  return dbConnection;
+}
+
 function getDbConnection() {
   if (!dbConnection) {
     dbConnection = mongoose.createConnection(process.env.MONGODB_URI, {
@@ -84,8 +89,10 @@ async function deleteUser(id) {
 export default {
   addUser,
   getUsers,
+  deleteUser,
   findUserById,
   findUserByName,
   findUserByJob,
   getDbConnection,
+  setDbConnection,
 };

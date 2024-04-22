@@ -1,18 +1,83 @@
-import userServices from "./models/user-services";
+import userServices from "./models/user-services.js";
+import UserSchema from "./models/user.js";
+import mongoose from "mongoose";
+import { MongoMemoryServer } from "mongodb-memory-server";
+
+let mongoServer;
+let conn;
+let userModel;
+
+beforeAll(async () => {
+  mongoServer = await MongoMemoryServer.create();
+  const uri = mongoServer.getUri();
+
+  const mongooseOpts = {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  };
+
+  conn = await mongoose.createConnection(uri, mongooseOpts);
+
+  userModel = conn.model("User", UserSchema);
+
+  let newUser = userModel({
+    name: "Joe",
+    job: "Mailman",
+  });
+  await newUser.save(newUser);
+  newUser = userModel({
+    name: "Charlie",
+    job: "Janitor",
+  });
+  await newUser.save(newUser);
+  newUser = userModel({
+    name: "Fred",
+    job: "Professor",
+  });
+  await newUser.save(newUser);
+  newUser = userModel({
+    job: "Choir Director",
+    name: "Shirley",
+  });
+  await newUser.save(newUser);
+  newUser = userModel({
+    name: "Mac",
+    job: "Professor",
+  });
+  await newUser.save(newUser);
+  newUser = userModel({
+    name: "Dee",
+    job: "Aspiring Actress",
+  });
+  await newUser.save(newUser);
+  newUser = userModel({
+    name: "Dennis",
+    job: "Bartender",
+  });
+  await newUser.save(newUser);
+
+  userServices.setDbConnection(conn);
+});
+
+afterAll(async () => {
+  await conn.dropDatabase();
+  await conn.close();
+  await mongoServer.stop();
+});
 
 test("test getUsers - all", async () => {
   const result = await userServices.getUsers();
 
   // expected = {
   //   _id: ObjectId("600f49555f2c7e977e0652c8"),
-  //   job: "Janitor",
-  //   name: "Charlie",
+  //   job: "Joe",
+  //   name: "Mailman",
   // };
 
-  // first user should be Charlie the Janitor
+  // first user should be Joe the Mailman
 
-  expect(result[0].name).toBe("Charlie");
-  expect(result[0].job).toBe("Janitor");
+  expect(result[0].name).toBe("Joe");
+  expect(result[0].job).toBe("Mailman");
 });
 
 test("test getUsers byName  Charlie", async () => {
@@ -27,7 +92,7 @@ test("test getUsers byName  Charlie", async () => {
   expect(result[0].name).toBe("Charlie");
   expect(result[0].job).toBe("Janitor");
 });
-test("test getUsers byJob  Janitor", async () => {
+test("test getUsers byJob Janitor", async () => {
   const result = await userServices.getUsers(null, "Janitor");
 
   // expected = {
@@ -54,8 +119,10 @@ test("test getUsers byName and byJob  Charlie, Janitor", async () => {
 });
 
 test("test findUserById Joe Mailman", async () => {
-  const result = await userServices.findUserById("600f49555f2c7e977e0652c8");
-  console.log("findUserById result: " + result);
+  const getId = await userServices.getUsers("Joe", "Mailman");
+  console.log("findUserById Id:", getId);
+  const result = await userServices.findUserById(getId[0].id);
+  // console.log("findUserById result: " + result);
 
   // expected = {
   //   _id: ObjectId("600f49555f2c7e977e0652c8"),
@@ -69,7 +136,7 @@ test("test findUserById Joe Mailman", async () => {
 
 test("test findUserById notfound", async () => {
   const result = await userServices.findUserById("111111111111111111111111");
-  console.log("findUserById result: " + result);
+  // console.log("findUserById result: " + result);
 
   // expected = {
   //   _id: ObjectId("600f49555f2c7e977e0652c8"),
@@ -81,8 +148,10 @@ test("test findUserById notfound", async () => {
 });
 
 test("test addUser  Fred, Dancer", async () => {
-  user = { name: "Fred", job: "Dancer" };
+  const user = { name: "Fred", job: "Dancer" };
   const add = await userServices.addUser(user);
+
+  console.log("test addser: ", add);
 
   const result = await userServices.getUsers("Fred", "Dancer");
 
