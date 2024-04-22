@@ -59,12 +59,6 @@ beforeAll(async () => {
   userServices.setDbConnection(conn);
 });
 
-afterAll(async () => {
-  await conn.dropDatabase();
-  await conn.close();
-  await mongoServer.stop();
-});
-
 test("test getUsers - all", async () => {
   const result = await userServices.getUsers();
 
@@ -151,14 +145,14 @@ test("test addUser  Fred, Dancer", async () => {
   const user = { name: "Fred", job: "Dancer" };
   const add = await userServices.addUser(user);
 
-  console.log("test addser: ", add);
+  console.log("test addUser: ", add);
 
   const result = await userServices.getUsers("Fred", "Dancer");
 
   // expected = {
   //   _id: ObjectId("600f49555f2c7e977e0652c8"),
-  //   job: "Janitor",
-  //   name: "Charlie",
+  //   job: "Fred",
+  //   name: "Dancer",
   // };
 
   expect(result[0].name).toBe("Fred");
@@ -172,13 +166,16 @@ test("test deleteUser  Fred", async () => {
 
   // expected = {
   //   _id: ObjectId("600f49555f2c7e977e0652c8"),
-  //   job: "Janitor",
-  //   name: "Charlie",
+  //   job: "Dancer",
+  //   name: "Fred",
   // };
   const after_result = await userServices.getUsers("Fred", "Dancer");
 
   expect(after_result).toEqual([]);
 });
-// afterAll(async () => {
-//   await userServices.disconnectDB();
-// });
+
+afterAll(async () => {
+  await conn.dropDatabase();
+  await conn.close();
+  await mongoServer.stop();
+});
