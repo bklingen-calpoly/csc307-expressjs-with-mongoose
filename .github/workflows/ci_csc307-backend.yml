@@ -7,9 +7,11 @@ on:
   push:
     branches:
       - ci
+      - ci-atlas
   pull_request:
     branches:
       - ci
+      - ci-atlas
   workflow_dispatch:
 
 jobs:
