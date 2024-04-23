@@ -9,12 +9,12 @@ on:
       - ci-cd-optimized
   workflow_dispatch: {}
 
-defaults:
-  run:
-    working-directory: expressjs-backend
+# defaults:
+#   run:
+#     working-directory: expressjs-backend
 
-env:
-  AZURE_WEBAPP_PACKAGE_PATH: expressjs-backend # set this to the path to your web app project, defaults to the repository root
+# env:
+#   AZURE_WEBAPP_PACKAGE_PATH: expressjs-backend # set this to the path to your web app project, defaults to the repository root
 
 jobs:
   build:
