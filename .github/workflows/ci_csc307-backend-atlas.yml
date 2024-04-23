@@ -6,11 +6,11 @@ name: CI demo with Atlas -- Build and test Node.js app - csc307-backend
 on:
   push:
     branches:
-      - ci
+      - main
       - ci-atlas
   pull_request:
     branches:
-      - ci
+      - main
       - ci-atlas
   workflow_dispatch:
 
