@@ -6,9 +6,15 @@ name: Build and deploy Node.js app to Azure Web App - csc307-backend
 on:
   push:
     branches:
-      - ci-cd
+      - ci-cd-optimized
+  workflow_dispatch: {}
 
-  workflow_dispatch:
+defaults:
+  run:
+    working-directory: expressjs-backend
+
+env:
+  AZURE_WEBAPP_PACKAGE_PATH: expressjs-backend # set this to the path to your web app project, defaults to the repository root
 
 jobs:
   build:
@@ -37,11 +43,14 @@ jobs:
           npm run test --if-present  
           npm run coverage --if-present
 
+      - name: Zip artifact for deployment
+        run: zip release.zip ./* -r
+
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v3
         with:
           name: node-app
-          path: .
+          path: expressjs-backend/release.zip
 
   deploy:
     runs-on: ubuntu-latest
@@ -56,11 +65,15 @@ jobs:
         with:
           name: node-app
 
+      - name: unzip artifact for deployment
+        run: unzip release.zip
+        working-directory: .
+
       - name: "Deploy to Azure Web App"
         id: deploy-to-webapp
         uses: azure/webapps-deploy@v2
         with:
           app-name: "csc307-backend"
           slot-name: "Production"
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_90EE23DFF3314435A84E8A8F86D7B1EB }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_2146A2410E69481DAC59259E64D0BF55 }}
           package: .
