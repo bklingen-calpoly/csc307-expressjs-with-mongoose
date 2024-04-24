@@ -76,7 +76,7 @@ async function findUserByNameAndJob(name, job) {
   return await userModel.find({ name: name, job: job });
 }
 
-async function deleteUser(id) {
+async function deleteUserById(id) {
   const userModel = getDbConnection().model("User", UserSchema);
   return await userModel.findByIdAndDelete(id);
 }
@@ -89,7 +89,7 @@ async function deleteUser(id) {
 export default {
   addUser,
   getUsers,
-  deleteUser,
+  deleteUserById,
   findUserById,
   findUserByName,
   findUserByJob,

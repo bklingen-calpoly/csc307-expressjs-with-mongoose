@@ -81,7 +81,7 @@ async function findUserById(id) {
 
 app.delete("/users/:id", async (req, res) => {
   const id = req.params["id"];
-  if (deleteUserById(id)) res.status(204).end();
+  if (userModel.deleteUserById(id)) res.status(204).end();
   else res.status(404).send("Resource not found.");
 });
 
