@@ -7,7 +7,7 @@ import userServices from "./models/user-services.js";
 
 const app = express();
 const port = 8000;
-const APP_VERSION = "1.0.1";
+const APP_VERSION = "1.0.2";
 
 // app.use(cors({ origin: "http://localhost" }));
 app.use(cors());
