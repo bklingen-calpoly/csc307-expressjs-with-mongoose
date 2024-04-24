@@ -61,6 +61,11 @@ jobs:
 
     runs-on: ${{ matrix.os }} # ubuntu-latest
     steps:
+      - name: Download artifact from build job
+        uses: actions/download-artifact@v3
+        with:
+          name: node-app
+
       - name: Deploy to EB
         uses: einaregilsson/beanstalk-deploy@v22
         with:
