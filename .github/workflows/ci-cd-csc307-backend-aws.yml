@@ -73,6 +73,7 @@ jobs:
           aws_secret_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           application_name: CSC307-express-backend
           environment_name: CSC307-express-backend-env
+          use_existing_version_if_available: true
           version_label: 1.0.4
           region: us-west-2
           deployment_package: csc307-backend-release.zip
