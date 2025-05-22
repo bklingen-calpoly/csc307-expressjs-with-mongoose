@@ -4,15 +4,15 @@ test("test getUsers - all", async () => {
   const result = await userServices.getUsers();
 
   // expected = {
-  //   _id: ObjectId("600f49555f2c7e977e0652c8"),
-  //   job: "Joe",
-  //   name: "Mailman",
+  // _id	"6009dc3df29c1feab0ec29a3"
+  // name	"Charlie"
+  // job	"Janitor"
   // };
 
-  // first user should be Joe the Mailman
+  // first user should be Charlie the Janitor
 
-  expect(result[0].name).toBe("Joe");
-  expect(result[0].job).toBe("Mailman");
+  expect(result[0].name).toBe("Charlie");
+  expect(result[0].job).toBe("Janitor");
 });
 
 test("test getUsers byName  Charlie", async () => {
