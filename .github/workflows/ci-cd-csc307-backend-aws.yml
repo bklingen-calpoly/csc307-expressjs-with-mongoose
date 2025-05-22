@@ -44,13 +44,13 @@ jobs:
           npm run coverage --if-present
 
       - name: Zip artifact for deployment
-        run: zip release.zip ./* -r
+        run: zip csc307-backend-release.zip ./* -r
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v3
         with:
           name: node-app
-          path: release.zip
+          path: csc307-backend-release.zip
 
   deploy:
     needs: build
@@ -71,8 +71,8 @@ jobs:
         with:
           aws_access_key: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws_secret_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          application_name: csc307-backend
-          environment_name: CSC307-backend-env
-          version_label: 1.0.3
+          application_name: CSC307-express-backend
+          environment_name: CSC307-express-backend-env
+          version_label: 1.0.4
           region: us-west-2
-          deployment_package: release.zip
+          deployment_package: csc307-backend-release.zip
